@@ -5,10 +5,10 @@ android {
     buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "org.polito.salvatore.germanomosconi"
-        minSdkVersion 'API 22'
+        minSdkVersion 23
         targetSdkVersion 23
         versionCode 1
-        versionName '0.2'
+        versionName '0.4'
     }
     buildTypes {
         release {

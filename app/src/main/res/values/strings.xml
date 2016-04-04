@@ -40,35 +40,7 @@ Mosconi ha inoltre in odio la colla, che cerca di ostacolarlo in tutti i modi, a
 Teorie moderne, tuttavia, sembrano individuare in un terzo nemico, quel mona che incolla i fogli, l\'autore di tali misfatti.
 Autorevoli studiosi di prestigiose università americane e inglesi hanno avanzato una nuova, rivoluzionaria e sconcertante ipotesi secondo cui "quel mona che batte la porta" e "quel mona che incolla i fogli" possano essere la stessa persona.
  A lui va attribuita la fondazione di un nuovo ordine, il mona-chesimo, che sta prendendo piede sempre più in Italia e in Uzbekistan.
-
-
-Nemici del Vate.
-Quel mona che batte la porta (e che chiude urlando);
-Quel mona che incolla i fogli;
-Quello che fa quel cazzo di rumore lì;
-Quello che continua ad andare avanti e indrio, dio can, con chea porta lì;
-Quei che i le fa aposta;
-Quel cazzo ghe è qua sotto;
-Quel deficiente che mi ha fatto innervosire;
-Quei che i g'ha buttà pe l'aria tuto de là;
-Gaetano (anche lui ghe si mette a pasar davanti, Dio..);
-Quelli che vengono avanti;
-Pacione;
-Marcelletti;
-La porta;
-L'Aida di Verdi che gliela fanno sentire in studio;
-Lech Wałęsa;
-La Stampante;
-Questo telefono porco;
-Le carte co la colla che non le se stacca (ostia);
-Quello che cade dall'altra parte;
-Un certo Dio (che a volte è un porco, a volte un cane);
-Una certa Madonna (che si presume essere di facili costumi);
-Otelma e il suo gemello malvagio, Bondi;
-"Quel mona che scrive le battute senza le maiuscole, senza i punti, porco..."
-Ti e tutti quanti quei come ti;
-Il pilota romano Romano Andrea de Cesaris;
-"No nessuno, Gesù Cristo, no nessuno""</string>
+        "</string>
 
     <string name="appellativi">"Il Vate
 Il Sommo Vate
@@ -95,8 +67,7 @@ Colui che se bestemmia lo fa per tre
 Colui che se non bestemmia, guarda...
 Gran maestro della bestemmia
 Il bestemmiator cortese"</string>
-    <string name="nemici">"
-Quel mona che batte la porta (e che chiude urlando);
+    <string name="nemici">"Quel mona che batte la porta (e che chiude urlando);
 Quel mona che incolla i fogli;
 Quello che fa quel cazzo di rumore lì;
 Quello che continua ad andare avanti e indrio, dio can, con chea porta lì;
@@ -122,11 +93,15 @@ Otelma e il suo gemello malvagio, Bondi;
 Ti e tutti quanti quei come ti;
 Il pilota romano Romano Andrea de Cesaris;
 "No nessuno, Gesù Cristo, no nessuno""</string>
-    <string name="title_activity_nemici">Nemici di Germano</string>
-    <string name="title_activity_nomi">Appellativi di Germano</string>
+    <string name="title_activity_nemici">Nemici</string>
+    <string name="title_activity_nomi">Appellativi</string>
     <string name="urliStr">Urli</string>
     <string name="appellativiStr">Appellativi</string>
     <string name="nemiciStr">Nemici</string>
     <string name="biografiaStr">Biografia</string>
+    <string name="title_activity_biografia">Biografia</string>
+    <string name="title_activity_biography">Biografia</string>
+    <string name="title_activity_nemici1">Nemici</string>
+    <string name="title_activity_nomi1">Appellativi</string>
 
 </resources>

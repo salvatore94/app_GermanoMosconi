@@ -19,16 +19,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
+            android:name=".BiographyActivity"
+            android:label="@string/title_activity_biography"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NemiciActivity"
-            android:label="@string/title_activity_nemici"
+            android:name=".Nemici1Activity"
+            android:label="@string/title_activity_nemici1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NomiActivity"
-            android:label="@string/title_activity_nomi"
+            android:name=".Nomi1Activity"
+            android:label="@string/title_activity_nomi1"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

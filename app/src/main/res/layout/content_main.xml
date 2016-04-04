@@ -10,18 +10,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="org.polito.salvatore.germanomosconi.MainActivity"
-    tools:showIn="@layout/app_bar_main">
-    <ListView
+    tools:showIn="@layout/app_bar_main"
+    android:background="#FF3F51B5">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/list1"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:textAlignment="center"
-        android:drawSelectorOnTop="false"
-        android:headerDividersEnabled="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="#FFFFFF"
+        android:paddingLeft="2dp"
+        android:layoutMode="opticalBounds"
         android:scrollIndicators="none"
-        android:scrollingCache="true"
-        android:paddingLeft="0dp"
-        android:layout_marginBottom="10dp" />
+        android:foreground="#FFFFFF"
+        android:foregroundGravity="bottom"
+        android:backgroundTint="#616161"
+        android:backgroundTintMode="add"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

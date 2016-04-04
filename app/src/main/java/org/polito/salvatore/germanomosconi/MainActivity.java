@@ -1,5 +1,6 @@
 package org.polito.salvatore.germanomosconi;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
@@ -7,6 +8,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -30,7 +33,12 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-        MediaPlayer mp = new MediaPlayer();
+    MediaPlayer mp = new MediaPlayer();
+
+    RecyclerView mRecycler;
+    RecyclerView.Adapter mRAdapter;
+    RecyclerView.LayoutManager mLayout;
+
 
     public void stopAndReset (MediaPlayer m) {
         m.stop();
@@ -52,15 +60,15 @@ public class MainActivity extends AppCompatActivity
             "vaffanculo_ti_e_tutti_quanti", "vaffanculo", "vai_in_mona", "vedo_tutto_meno_quello_che_dovrei_vedere"};
 
 
-    final String[] titoli = new String[]  { "ah non lo so io", "avanti e n drio", "avv bisagno", "carte co la cola", "chi e quel mona", "chi fa quel rumore li",
-            "come se ciama elo li","cos e caduto", "cosa ghe qua sotto", "d p", "dai va la", "dio bono de dio", "dio bubu",
-            "dio camaja de dio", "dio cazzo", "dio pa pa pa pa", "dio po dio", "dio porco  dio cane", "dio ss", "e con questo",
-            "gabriele sborina", "germano e il telefono", "il punteggio dio cane", "in primo piano", "la societa", "ma che ooooh",
-            "ma e possibile che sia cosi degli imbecilli", "madonna puttinaaaa", "madonna", "no nessuno", "no no vai in mona", "non e possibile",
-            "non si puo scrivere ste notizie in maiuscolo", "orco dio in serie", "passar davanti", "pilota romano romano andrea de cesaris", "porca madonna",
-            "porco dio 1", "porco dio 2", "portata la madonna", "se non bestemmio guarda", "se trovo quello che mi fa innervosire",
-            "se venite avanti vi do un pugno", "serie esplosiva", "serrare la porta", "squadre", "stronzi", "tutto da capo",
-            "vaffanculo ti e tutti quanti", "vaffanculo", "vai in mona", "vedo tutto meno quello che dovrei vedere" };
+    final String[] titoli = new String[]  { "Ah non lo so io", "Avanti e n drio", "Avv bisagno", "Carte co la cola", "Chi e quel mona", "Chi fa quel rumore li",
+            "Come se ciama elo li","Cos\'e caduto", "Cosa ghe qua sotto", "Dio porco", "Dai va la", "Dio bono de Dio", "Dio bubu",
+            "Dio camaja de Dio", "Dio cazzo", "Dio pa pa pa pa", "Dio po Dio", "Dio porco  Dio cane", "Dio ss", "E con questo",
+            "Gabriele Sborina", "Germano e il telefono", "Il punteggio Dio cane", "In primo piano", "La societa", "Ma che ooooh",
+            "Ma e possibile che sia cosi degli imbecilli", "Madonna puttinaaaa", "Madonna", "No nessuno", "No no vai in mona", "Non e possibile",
+            "Non si puo scrivere ste notizie in maiuscolo", "Orco Dio in serie", "Passar davanti", "Pilota romano romano Andrea DeCesaris", "Porca Madonna",
+            "Porco Dio 1", "Porco Dio 2", "Portata la madonna", "Se non bestemmio guarda", "Se trovo quello che mi fa innervosire",
+            "Se venite avanti vi do un pugno", "Serie esplosiva", "Serrare la porta", "Squadre", "Stronzi", "Tutto da capo",
+            "Vaffanculo ti e tutti quanti", "Vaffanculo", "Vai in mona", "Vedo tutto meno quello che dovrei vedere" };
 
 
 
@@ -70,30 +78,20 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, android.R.layout.test_list_item, android.R.id.text1,  titoli) {
-           @Override
-           public View getView(int position, View convertView, ViewGroup parent) {
-               View view = super.getView(position, convertView, parent);
-               TextView text = (TextView) view.findViewById(android.R.id.text1);
-               text.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/segoe_print.ttf"));
+        mRecycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mLayout = new LinearLayoutManager(this);
+        mRecycler.setLayoutManager(mLayout);
 
-              // text.setTextColor(Color.BLACK);
-               return view;
-           }
-       };
-        //ArrayAdapter<String> mAdapter = new CustomAdapter(this, android.R.layout.simple_list_item_1, titoli);
+        mRAdapter = new MyAdapter(titoli);
+        mRecycler.setAdapter(mRAdapter);
 
-        ListView v = (ListView)findViewById(R.id.list1);
-        v.setAdapter(mAdapter);
-        v.setLongClickable(true);
-
-        v.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ItemClickSupport.addTo(mRecycler).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
 
                 if (mp.isPlaying()) {
                     stopAndReset(mp);
-                    Snackbar.make(view, "Riproduzione interrotta", Snackbar.LENGTH_LONG)
+                    Snackbar.make(v, "Riproduzione interrotta", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
 
@@ -127,15 +125,14 @@ public class MainActivity extends AppCompatActivity
 
                 mp.start();
 
-                Snackbar.make(view, titoli[position], Snackbar.LENGTH_LONG)
+                Snackbar.make(v, titoli[position], Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 //Log.d("List", "Ho cliccato sull'elemento con titolo " + mp.getDuration());
-
             }
-
-
         });
+
+
 
 
 
@@ -177,7 +174,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }
@@ -207,13 +204,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             //ritorna alla schermata urli
         } else if (id == R.id.nav_gallery) {
-            Intent i = new Intent(this, ScrollingActivity.class);
+            Intent i = new Intent(this, BiographyActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_slideshow) {
-            Intent i = new Intent(this, NomiActivity.class);
+            Intent i = new Intent(this, Nomi1Activity.class);
             startActivity(i);
         } else if (id == R.id.nav_manage) {
-            Intent i = new Intent(this, NemiciActivity.class);
+            Intent i = new Intent(this, Nemici1Activity.class);
             startActivity(i);
         }
 
